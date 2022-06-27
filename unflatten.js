@@ -1,24 +1,10 @@
 function unflatten(flatObject) {
- const unflatten = (flatObject = {}) => {
-   const result = {};
-   let temp, substrings, property, i;
-   for (property in flatObject) {
-      substrings = property.split('.');
-   temp = result;
-   for (i = 0; i < substrings.length - 1; i++) {
-      if (!(substrings[i] in temp)) {
-         if (isFinite(substrings[i + 1])) {
-             temp[substrings[i]] = [];
-         }
-         else {
-            temp[substrings[i]] = {};
-         }
-      }
-      temp = temp[substrings[i]];
-   }
-   temp[substrings[substrings.length - 1]] = flatObject[property];
+ var result = {}
+  for (var i in flatObject) {
+    var keys = i.split('.')
+    keys.reduce(function(r, e, j) {
+      return r[e] || (r[e] = isNaN(Number(keys[j + 1])) ? (keys.length - 1 == j ? flatObject[i] : {}) : [])
+    }, result)
+  }
+  return result
 }
-return result;
-}; console.log(JSON.stringify(unflatten(flatObject), undefined, 4));
-}
-

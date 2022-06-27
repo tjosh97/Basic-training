@@ -1,13 +1,9 @@
-let text = "Howdvdkkmkke  enfjn grgnj";
-const myArray = text.split("");
-const count = {};
-
-for (const element of myArray) {
-  if (count[element]) {
-    count[element] += 1;
-  } else {
-    count[element] = 1;
-  }
+function calculateFrequency(string) {
+string = string.replace(/[^a-zA-Z0-9 ]/g, '').replace(/\s/g, "");
+const counts = {};
+for (let char of string.toLowerCase()) {
+    counts[char] = counts[char] + 1 || 1;
 }
 
-console.log(count);
+return (counts);
+}

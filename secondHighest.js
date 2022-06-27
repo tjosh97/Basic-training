@@ -12,5 +12,4 @@ for(let i = 1; i < array.length; i++) {
   SecondMax = array[i];
   }
 };
-
 return SecondMax;

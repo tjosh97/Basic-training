@@ -9,6 +9,7 @@ function flatten(unflatObject) {
     }
   }
   return res;
+  
 }
 
 const flattened = flattenObj(unflatObject)
